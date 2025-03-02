@@ -1,0 +1,61 @@
+[filter "lfs"]
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
+clean = git-lfs clean -- %f
+
+[alias]
+pl = pull
+ph = push
+st = status -sb
+mr = merge
+ci = commit
+br = branch
+co = checkout
+sw = switch
+rb = rebase
+lg = log --graph --pretty=format:'%Cgreen%h%Creset -%Creset %s%C(yellow)%d %Cblue(%Creset%Cred%aN%Creset%Cblue, %cr)%Creset' --abbrev-commit --date=relative
+df = diff HEAD :!*-lock.*
+sa = stash
+cin = commit --no-verify
+resign-all = rebase -i 'git commit --amend --no-edit -n -S'
+phrb = push --force-with-lease
+
+[color]
+ui = auto
+
+[push]
+default = simple
+autoSetupRemote = true
+
+[difftool]
+prompt = false
+
+[pull]
+ff = only
+rebase = false
+
+[interactive]
+diffFilter = delta --color-only --features=interactive
+
+[delta]
+features = decorations
+
+[delta "interactive"]
+keep-plus-minus-markers = false
+
+[delta "decorations"]
+commit-decoration-style = blue ol
+commit-style = raw
+file-style = omit
+hunk-header-decoration-style = blue box
+hunk-header-file-style = red
+hunk-header-line-number-style = "#067a00"
+hunk-header-style = file line-number syntax
+
+[core]
+editor = nvim
+excludesfile = ~/.gitignore_global
+pager = delta
+[init]
+defaultBranch = main

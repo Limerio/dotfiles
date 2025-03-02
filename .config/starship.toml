@@ -1,0 +1,105 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = "$os $all\n$character"
+
+add_newline = true
+
+[line_break]
+disabled = true
+
+[cmd_duration]
+min_time = 10_000
+format = " took [$duration]($style) "
+
+[os]
+disabled = false
+symbols = { Android = "", Linux = "", Macos = "", Ubuntu = "", Unknown = "❓", Windows = "" }
+
+[directory]
+truncation_length = 100
+truncate_to_repo = false
+format = "[$path]($style)[$lock_symbol]($lock_style) "
+
+[git_branch]
+format = " [$symbol$branch]($style) "
+symbol = " "
+style = "bold yellow"
+
+[git_commit]
+commit_hash_length = 8
+style = "bold white"
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+
+[git_status]
+conflicted = "⚔️ "
+ahead = "🏎️ 💨 ×${count} "
+behind = "🐢 ×${count} "
+diverged = "🔱 🏎️ 💨 ×${ahead_count} 🐢 ×${behind_count} "
+untracked = "🛤️  ×${count} "
+stashed = "📦 "
+modified = "📝 ×${count} "
+staged = "🗃️  ×${count} "
+renamed = "📛 ×${count} "
+deleted = "🗑️  ×${count} "
+style = "bright-white"
+format = "$all_status$ahead_behind"
+
+[hostname]
+ssh_only = true
+format = "💻 [$hostname]($style) "
+trim_at = "-"
+style = "yellow"
+
+[kubernetes]
+disabled = false
+format = 'on [⛵ $context \($namespace\)](dimmed green) '
+
+[package]
+disabled = true
+
+[rust]
+symbol = " "
+
+[python]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[rlang]
+symbol = " "
+
+[php]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[zig]
+symbol = " "
+
+[c]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[crystal]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[ocaml]
+symbol = " "
+
+[ruby]
+symbol = " "
