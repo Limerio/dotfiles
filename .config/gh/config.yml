@@ -11,7 +11,9 @@ pager:
 # Aliases allow you to create nicknames for gh commands
 aliases:
     co: pr checkout
-    prcw: pr checks --watch
+    prcwa: pr checks --watch
+    prcw: pr checks --web
+    prvw: pr view --web
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.
