@@ -3,6 +3,9 @@
 ---@type LazySpec
 return {
   "nvimtools/none-ls.nvim",
+  dependencies = {
+    "nvimtools/none-ls-extras.nvim",
+  },
   opts = function(_, opts)
     -- opts variable is the default configuration table for the setup function call
     local null_ls = require "null-ls"
@@ -16,8 +19,10 @@ return {
     opts.sources = require("astrocore").list_insert_unique(opts.sources, {
       -- Set a formatter
       null_ls.builtins.formatting.stylua,
+      require "none-ls.diagnostics.eslint",
+      require "none-ls.code_actions.eslint",
       null_ls.builtins.formatting.prettier.with {
-        condition = function (utils)
+        condition = function(utils)
           return utils.root_has_file {
             ".prettierrc",
             ".prettierrc.js",
@@ -26,7 +31,7 @@ return {
             ".prettierrc.yaml",
             ".prettierrc.yml",
           }
-        end
+        end,
       },
       null_ls.builtins.formatting.biome.with {
         condition = function(utils) return utils.root_has_file "biome.json" end,
