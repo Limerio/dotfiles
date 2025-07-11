@@ -29,6 +29,8 @@ eval "$(starship init zsh)"
 export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export PATH=":$HOME/.local/bin:$PATH"
+export PATH="~/emsdk:$PATH"
+export PATH="~/emsdk/upstream/emscripten:$PATH"
 
 eval "$(scw autocomplete script shell=zsh)"
 
@@ -42,3 +44,4 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
