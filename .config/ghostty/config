@@ -1,3 +1,4 @@
 font-feature = -liga
 background-blur = true
 background-opacity = 0.8
+shell-integration = zsh
