@@ -6,7 +6,7 @@ clean = git-lfs clean -- %f
 
 [alias]
 pl = pull
-ph = push
+ph = "!bash ~/dotfiles/git-push.sh"
 st = status -sb
 mr = merge
 ci = commit
