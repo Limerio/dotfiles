@@ -1,8 +1,8 @@
 # ⋅ dotfiles
 
-## 👀 Introduction
+## 👋 Introduction
 
-This is my Mac .dotfiles configuration but it can be use for linux operating system you just need to adapt some imports.
+This is my Mac `.dotfiles` configuration but it can be use for linux operating system you just need to adapt some imports.
 
 ## 📥 Installation
 
