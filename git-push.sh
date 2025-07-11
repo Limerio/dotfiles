@@ -22,10 +22,18 @@ if git push "$@"; then
             esac
         else
             echo "❓ Create a Pull Request for branch '$current_branch'? (y/n):"
-            read -r response
-            case "$response" in
+            read -r create_pr
+            case "$create_pr" in
             [yY] | [yY][eE][sS])
-                gh pr create --title "$(git br --show-current)" --fill
+                gh pr create --title "$(git br --show-current)" --fill --assignee @me
+
+                echo "📝 Put the new PR in draft? (y/n):"
+                read -r draft
+                case "$draft" in
+                [yY] | [yY][eE][sS])
+                    gh pr ready --undo
+                    ;;
+                esac
 
                 echo "🌐 Open the new PR in browser? (y/n):"
                 read -r open_response
