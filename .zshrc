@@ -11,7 +11,7 @@ alias cls="clear"
 
 export ZSH="$HOME/.oh-my-zsh"
 
-plugins=(git zsh-autosuggestions node kubectl gh docker docker-compose cp brew rust ssh tmux vagrant yarn terraform scw pip postgres python pyenv npm helm golang fzf fluxcd bun)
+plugins=(git zsh-autosuggestions zsh-interactive-cd node kubectl gh docker docker-compose cp brew rust ssh tmux vagrant yarn terraform scw pip postgres python pyenv npm helm golang fzf fluxcd bun)
 
 source $ZSH/oh-my-zsh.sh
 
