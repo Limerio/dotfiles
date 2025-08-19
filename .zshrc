@@ -8,6 +8,7 @@ alias ll="ls -ll"
 alias htop="btop"
 alias cd2="cd ../../"
 alias cls="clear"
+alias grep="ripgrep"
 
 export ZSH="$HOME/.oh-my-zsh"
 
