@@ -1,3 +1,44 @@
+#!/bin/bash
+
+check_fzf() {
+    if ! command -v fzf &> /dev/null; then
+        echo "Error: fzf is not installed" >&2
+        exit 1
+    fi
+}
+
+get_base_branches() {
+    # Get remote branches (excluding HEAD and current branch)
+    current_branch=$(git branch --show-current)
+    git branch -r --format="%(refname:short)" | \
+        grep -v 'HEAD' | \
+        sed 's/origin\///' | \
+        grep -v "^$current_branch$" | \
+        sort -u
+}
+
+select_base_branch_fzf() {
+    echo "🌿 Select base branch for the PR:"
+    
+    selected=$(get_base_branches | fzf \
+        --height=40% \
+        --layout=reverse \
+        --border \
+        --prompt="Select base branch: " \
+        --preview="git log --oneline -10 --color=always {}" \
+        --preview-window=right:50% \
+        --header="Use arrow keys to navigate, Enter to select, Esc to cancel")
+    
+    if [ -z "$selected" ]; then
+        echo "⏭️  No branch selected, using 'main' as default"
+        echo "main"
+    else
+        echo "$selected"
+    fi
+}
+
+
+
 echo "🚀 Starting enhanced git push..."
 if git push "$@"; then
     echo "✅ Push successful!"
@@ -13,7 +54,12 @@ if git push "$@"; then
             read -r create_pr
             case "$create_pr" in
             [yY] | [yY][eE][sS])
-                gh pr create --title "$(git br --show-current)" --fill --assignee @me
+                # Select base branch using fzf
+                check_fzf
+                base_branch=$(select_base_branch_fzf)
+                
+                echo "📋 Creating PR with base branch: $base_branch"
+                gh pr create --title "$(git br --show-current)" --base "$base_branch" --fill --assignee @me
                 echo "📝 Put the new PR in draft? (y/n):"
                 read -r draft
                 case "$draft" in
