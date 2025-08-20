@@ -35,7 +35,6 @@ export PATH="~/emsdk/upstream/emscripten:$PATH"
 
 eval "$(scw autocomplete script shell=zsh)"
 
-. "$HOME/.local/bin/env"
 export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 
 # pnpm
@@ -46,3 +45,9 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
