@@ -49,12 +49,12 @@ checkout_with_fzf() {
     
     branch_name=$(echo "$selected" | sed 's/^[^:]*: //')
     
+    echo "Selected: $branch_name"
+    
     if echo "$selected" | grep -q "^remote:"; then
         local_branch_name="${branch_name#origin/}"
-        echo "Creating and checking out local branch '$local_branch_name' from '$branch_name'"
         git checkout -b "$local_branch_name" "$branch_name"
     else
-        echo "Checking out branch: $branch_name"
         git checkout "$branch_name"
     fi
 }
