@@ -59,27 +59,11 @@ checkout_with_fzf() {
     fi
 }
 
-checkout_direct() {
-    local branch_name="$1"
-    echo "Checking out branch: $branch_name"
-    
-    if git checkout "$branch_name" 2>/dev/null; then
-        echo "Successfully checked out '$branch_name'"
-    else
-        if ! git checkout -b "$branch_name" "origin/$branch_name" 2>/dev/null; then
-            echo "Error: Could not checkout or create branch '$branch_name'" >&2
-            echo "Available branches:" >&2
-            git branch -a >&2
-            exit 1
-        fi
-    fi
-}
-
 main() {
     check_git_repo
     
     if [ $# -eq 1 ]; then
-        checkout_direct "$1"
+        git checkout "$1"
     elif [ $# -eq 0 ]; then
         check_fzf
         checkout_with_fzf
