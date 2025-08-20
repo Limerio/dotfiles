@@ -13,7 +13,7 @@ ci = commit
 br = branch
 co = "!bash ~/dotfiles/git-checkout.sh"
 sw = switch
-rb = rebase
+rb = "!bash ~/dotfiles/git-rebase.sh"
 lg = log --graph --pretty=format:'%Cgreen%h%Creset -%Creset %s%C(yellow)%d %Cblue(%Creset%Cred%aN%Creset%Cblue, %cr)%Creset' --abbrev-commit --date=relative
 df = diff HEAD :!*-lock.*
 sa = stash
