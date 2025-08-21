@@ -62,16 +62,11 @@ checkout_with_fzf() {
 main() {
     check_git_repo
     
-    if [ $# -eq 1 ]; then
-        git checkout "$1"
-    elif [ $# -eq 0 ]; then
+    if [ $# -eq 0 ]; then
         check_fzf
         checkout_with_fzf
     else
-        echo "Usage: $0 [branch-name]" >&2
-        echo "  branch-name: Optional. Branch to checkout directly" >&2
-        echo "  If no branch-name provided, fzf will be used for interactive selection" >&2
-        exit 1
+        git checkout "$@"
     fi
 }
 
