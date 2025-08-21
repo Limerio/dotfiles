@@ -18,8 +18,6 @@ get_base_branches() {
 }
 
 select_base_branch_fzf() {
-    echo "🌿 Select base branch for the PR:"
-    
     selected=$(get_base_branches | fzf \
         --height=40% \
         --layout=reverse \
@@ -30,7 +28,6 @@ select_base_branch_fzf() {
         --header="Use arrow keys to navigate, Enter to select, Esc to cancel")
     
     if [ -z "$selected" ]; then
-        echo "⏭️  No branch selected, using 'main' as default"
         echo "main"
     else
         echo "$selected"
@@ -54,8 +51,8 @@ if git push "$@"; then
             read -r create_pr
             case "$create_pr" in
             [yY] | [yY][eE][sS])
-                # Select base branch using fzf
                 check_fzf
+                echo "🌿 Select base branch for the PR:"
                 base_branch=$(select_base_branch_fzf)
                 
                 echo "📋 Creating PR with base branch: $base_branch"
