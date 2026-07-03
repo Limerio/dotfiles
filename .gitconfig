@@ -57,5 +57,15 @@ hunk-header-style = file line-number syntax
 editor = nvim
 excludesfile = ~/.gitignore_global
 pager = delta
+ignorecase = false
 [init]
 defaultBranch = main
+[user]
+	email = 44976231+Limerio@users.noreply.github.com
+	name = Limerio
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
